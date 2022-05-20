@@ -29,6 +29,6 @@ RSpec.describe 'projects#show', type: :feature do
     ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
     ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
     visit "/projects/#{news_chic[:id]}"
-    expect(page).to have_content('Average Contestant Experience: 12.50')
+    expect(page).to have_content('Average Contestant Experience: 12.5')
   end
 end
