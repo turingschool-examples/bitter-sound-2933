@@ -22,5 +22,10 @@ RSpec.describe Project, type: :model do
       ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
       expect(news_chic.num_contestants).to eq(2)
     end
+    it 'can give the projects challenge theme' do
+      recycled_material_challenge = Challenge.create(theme: 'Recycled Material', project_budget: 1000)
+      news_chic = recycled_material_challenge.projects.create(name: 'News Chic', material: 'Newspaper')
+      expect(news_chic.challenge_theme).to eq(recycled_material_challenge.theme)
+    end
   end
 end
