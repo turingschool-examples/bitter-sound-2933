@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'projects#show' do
+RSpec.describe 'projects#show', type: :feature do
   it 'Displays the project name, material, and challenge theme' do
     recycled_material_challenge = Challenge.create(theme: 'Recycled Material', project_budget: 1000)
     news_chic = recycled_material_challenge.projects.create(name: 'News Chic', material: 'Newspaper')
