@@ -36,7 +36,7 @@ RSpec.describe Project, type: :model do
       gretchen = Contestant.create(name: 'Gretchen Jones', age: 36, hometown: 'NYC', years_of_experience: 12)
       ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
       ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
-      expect(news_chic.average_contestant_experience).to eq(12.50)
+      expect(news_chic.average_contestant_experience).to eq(12.5)
     end
   end
 end
