@@ -114,3 +114,4 @@ And when I visit the contestants index page
 I see that project listed under that contestant's name
 ```
 
+This is my practice IC.
