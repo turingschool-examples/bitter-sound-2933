@@ -13,6 +13,6 @@ class Project < ApplicationRecord
   end
 
   def average_contestant_experience
-    (contestants.pluck(:years_of_experience).sum.to_f / num_contestants).round(2)
+    contestants.average(:years_of_experience)
   end
 end
