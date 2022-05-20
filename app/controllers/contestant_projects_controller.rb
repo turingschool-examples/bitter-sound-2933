@@ -1,5 +1,5 @@
-class ContestantProjectController < ApplicationController
+class ContestantProjectsController < ApplicationController
 
-  
+
 
 end
