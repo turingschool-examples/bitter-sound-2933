@@ -1,0 +1,5 @@
+class ContestantProjectController < ApplicationController
+
+  
+
+end
