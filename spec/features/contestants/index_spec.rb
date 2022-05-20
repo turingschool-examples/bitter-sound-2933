@@ -26,7 +26,7 @@ RSpec.describe "contestants#index" do
       ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
 
       visit "/contestants"
-save_and_open_page
+
       expect(page).to have_content(jay.name)
       expect(page).to have_content(gretchen.name)
       expect(page).to have_content("News Chic")
