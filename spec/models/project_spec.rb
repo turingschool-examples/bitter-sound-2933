@@ -39,8 +39,6 @@ RSpec.describe Project, type: :model do
       ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
       ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
 
-      visit "/projects/#{news_chic.id}"
-
       expect(news_chic.average_experience).to eq(12.5)
   end
   end
