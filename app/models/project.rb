@@ -11,4 +11,8 @@ class Project < ApplicationRecord
   def challenge_theme
     challenge.theme
   end
+
+  def average_contestant_experience
+    (contestants.pluck(:years_of_experience).sum.to_f / num_contestants).round(2)
+  end
 end
