@@ -47,4 +47,19 @@ describe 'projects show page' do
     expect(page).to have_content("Number of Contestants: 3")
 
   end
+
+  it "displays the average years experience of all contestants on the project" do
+    visit "/projects/#{@boardfit.id}"
+    save_and_open_page
+    expect(page).to have_content("Average Contestant Experience: 11.50")
+
+    visit "/projects/#{@upholstery_tux.id}"
+    save_and_open_page
+    expect(page).to have_content("Average Contestant Experience: 12")
+
+    visit "/projects/#{@news_chic.id}"
+    save_and_open_page
+    expect(page).to have_content("Average Contestant Experience: 11")
+
+  end
 end
