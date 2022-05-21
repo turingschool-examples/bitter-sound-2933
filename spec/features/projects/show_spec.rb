@@ -48,7 +48,7 @@ describe 'projects show page' do
 
   it "displays the average years experience of all contestants on the project" do
     visit "/projects/#{@boardfit.id}"
-  
+
     expect(page).to have_content("Average Contestant Experience: 11.5")
 
     visit "/projects/#{@upholstery_tux.id}"
@@ -56,6 +56,17 @@ describe 'projects show page' do
 
     visit "/projects/#{@news_chic.id}"
     expect(page).to have_content("Average Contestant Experience: 11")
+  end
 
+  it "allows me to add a contestant and redirects me to see the project page with an additional contestant" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Number of Contestants: 3")
+
+    fill_in "Contestant id", with: "#{@erin.id}"
+    click_button "Add Contestant To Project"
+
+    expect(current_path).to eq("/projects/#{@news_chic.id}")
+    expect(page).to have_content("Number of Contestants: 4")
   end
 end
