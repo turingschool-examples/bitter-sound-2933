@@ -44,7 +44,7 @@ describe 'contestants index page' do
   end
 
   it "adds the project a contestant was added to when the form is filled out" do
-    
+
     within "#contestant-#{@erin.id}" do
       expect(page).to_not have_content("News Chic")
     end
@@ -55,7 +55,7 @@ describe 'contestants index page' do
     click_button "Add Contestant to Project"
 
     visit '/contestants'
-    save_and_open_page
+    
     within "#contestant-#{@erin.id}" do
       expect(page).to have_content("News Chic")
     end
