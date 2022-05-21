@@ -95,11 +95,11 @@ RSpec.describe "projects#show" do
 
       visit "/projects/#{news_chic.id}"
 
-      expect(page).to have_content('Add Contestant to Project')
+      expect(page).to have_content('Add contestant to project')
       fill_in 'contestant_by_id', with: "#{kentaro.id}"
       click_on 'Submit'
 
-      expect(current_page).to eq("/projects/#{news_chic.id}")
+      expect(current_path).to eq("/projects/#{news_chic.id}")
       expect(page).to have_content("Number of Contestants: 3")
     end
   end

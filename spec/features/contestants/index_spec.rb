@@ -56,7 +56,7 @@ RSpec.describe "contestants#index" do
 
       expect(page).to have_content(jay.name)
       expect(page).to have_content(gretchen.name)
-
+save_and_open_page
       within ("#contestant-#{kentaro.name}") do
         expect(page).to_not have_content(news_chic.name)
       end
