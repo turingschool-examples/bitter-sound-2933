@@ -26,12 +26,10 @@ describe 'projects show page' do
 
   it "displays a projects name, material and theme" do
     visit "/projects/#{@boardfit.id}"
-    save_and_open_page
+    
     expect(page).to have_content("Boardfit")
     expect(page).to have_content("Cardboard Boxes")
     expect(page).to have_content("Recycled Material")
     expect(page).to_not have_content("News Chic")
   end
-
-
 end
