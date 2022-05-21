@@ -35,12 +35,15 @@ describe 'projects show page' do
 
   it "displays the number of contestants working on this project" do
     visit "/projects/#{@boardfit.id}"
+    save_and_open_page
     expect(page).to have_content("Number of Contestants: 2")
 
     visit "/projects/#{@upholstery_tux.id}"
+    save_and_open_page
     expect(page).to have_content("Number of Contestants: 1")
 
     visit "/projects/#{@news_chic.id}"
+    save_and_open_page
     expect(page).to have_content("Number of Contestants: 3")
 
   end

@@ -41,7 +41,7 @@ RSpec.describe Project, type: :model do
 
     it "returns the number of contestants working on an individual project" do
       expect(@lit_fit.contestants_count).to eq(3)
-      expect(@boardfit.contestants_count).to eq(1)
+      expect(@boardfit.contestants_count).to eq(2)
 
     end
   end
