@@ -19,7 +19,7 @@ describe 'contestants index page' do
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
-    
+
     visit '/contestants'
   end
 
@@ -41,6 +41,25 @@ describe 'contestants index page' do
       expect(page).to_not have_content("News Chic")
       expect(page).to_not have_content("Upholstery Tuxedo")
     end
+  end
+
+  it "adds the project a contestant was added to when the form is filled out" do
+    
+    within "#contestant-#{@erin.id}" do
+      expect(page).to_not have_content("News Chic")
+    end
+
+    visit "/projects/#{@news_chic.id}"
+
+    fill_in "Contestant ID", with: "#{@erin.id}"
+    click_button "Add Contestant to Project"
+
+    visit '/contestants'
+    save_and_open_page
+    within "#contestant-#{@erin.id}" do
+      expect(page).to have_content("News Chic")
+    end
+
   end
 
 end
