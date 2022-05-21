@@ -63,8 +63,8 @@ describe 'projects show page' do
 
     expect(page).to have_content("Number of Contestants: 3")
 
-    fill_in "Contestant id", with: "#{@erin.id}"
-    click_button "Add Contestant To Project"
+    fill_in "Contestant ID", with: "#{@erin.id}"
+    click_button "Add Contestant to Project"
 
     expect(current_path).to eq("/projects/#{@news_chic.id}")
     expect(page).to have_content("Number of Contestants: 4")
