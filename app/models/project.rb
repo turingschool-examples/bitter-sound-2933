@@ -6,6 +6,7 @@ class Project <ApplicationRecord
 
   def project_theme
     challenge.theme
-
   end
+
+
 end
