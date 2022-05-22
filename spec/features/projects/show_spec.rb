@@ -71,7 +71,7 @@ RSpec.describe 'projects show page', type: :feature do
         expect(page).to have_content("Number of Contestants: 0")
     end
 
-    it 'displays average age of contestants on project' do
+    it 'displays average years of experience of contestants on project' do
         recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
         furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
 
@@ -96,7 +96,7 @@ RSpec.describe 'projects show page', type: :feature do
         visit "/projects/#{news_chic.id}"
         expect(page).to have_content("Average Contestant Experiences: 12.5 years")
         visit "/projects/#{upholstery_tux.id}"
-        expect(page).to have_content("Average Contestant Experiences: 10 years")
+        expect(page).to have_content("Average Contestant Experiences: 10.0 years")
         visit "/projects/#{boardfit.id}"
         expect(page).to have_content("Average Contestant Experiences: 11.67 years")
     end
