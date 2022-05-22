@@ -31,6 +31,7 @@ RSpec.describe 'the project show page', type: :feature do
   #   Material: Lamp Shade
   #   Challenge Theme: Apartment Furnishings
   #   Number of Contestants: 3 )
+  
   it 'displays count of contestants for each project' do
     recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
