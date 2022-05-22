@@ -98,7 +98,7 @@ RSpec.describe 'project show page', type: :feature do
             visit "/projects/#{lit_fit.id}"
             expect(page).to have_content("Projects")
 
-            expect(page).to have_content("Average Contestant Experience: 11 years")
+            expect(page).to have_content("Average Contestant Experience: 11.0 years")
 
             visit "/projects/#{boardfit.id}"
             expect(page).to have_content(boardfit.material)
