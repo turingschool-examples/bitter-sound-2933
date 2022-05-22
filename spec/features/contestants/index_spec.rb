@@ -39,7 +39,7 @@ RSpec.describe 'contestants index page', type: :feature do
             ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
 
             visit '/contestants' 
-
+            save_and_open_page
             expect(page).to have_content("Projects: News Chic")
             expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
             expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
