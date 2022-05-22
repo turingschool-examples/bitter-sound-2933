@@ -1,6 +1,6 @@
 require 'rails_helper' 
 
-RSpec.describe 'projects show page' do
+RSpec.describe 'projects show page', type: :feature do
 
     it 'displays the projects namd and material' do
         recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
