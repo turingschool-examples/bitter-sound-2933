@@ -100,4 +100,22 @@ RSpec.describe 'projects show page', type: :feature do
         visit "/projects/#{boardfit.id}"
         expect(page).to have_content("Average Contestant Experiences: 11.67 years")
     end
+
+    it 'has a form to enter contestant id to add to project' do
+        recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+        news_chic = recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+        jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
+        gretchen = Contestant.create(name: "Gretchen Jones", age: 40, hometown: "NYC", years_of_experience: 12)
+        
+        ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
+       
+        visit "/projects/#{news_chic.id}"
+        expect(page).to have_content("Number of Contestants: 1")
+
+        fill_in('project_id', with: gretchen.id)
+        click_button('Add Contestant To Project')
+
+        expect(current_path).to eq("/projects/#{news_chic.id}")
+        expect(page).to have_content("Number of Contestants: 2")
+    end
 end
