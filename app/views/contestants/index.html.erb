@@ -1,0 +1,8 @@
+<h1>Contestant Index Page</h1>
+<% @contestants.each do |contestant| %>
+  <p><b><%= contestant.name %></b></p>
+  <p>Projects:
+    <% contestant.projects.each do |project| %>
+    <%= project.name %>
+    <% end %>
+<% end %>
