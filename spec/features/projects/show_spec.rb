@@ -131,21 +131,17 @@ RSpec.describe 'project show page', type: :feature do
 
             visit "/projects/#{boardfit.id}"
             expect(page).to have_content("Add Contestant Form")
-            save_and_open_page
-            fill_in(:name, with: 'Harry')
-            fill_in(:age, with: 42)
-            fill_in(:hometown, with: 'Pheonix')
-            fill_in(:years_of_experience, with: 32)
+            # save_and_open_page
+            fill_in(:contestant_id, with: gretchen.id)
 
-            click_button('Submit')
+            click_button("Add Contestant to #{boardfit.name}")
             
             expect(current_path).to eq("/projects/#{boardfit.id}")
-            expect(page).to have_content('Harry')
             expect(page).to have_content("Number of Contestants: 3")
 
             visit '/contestants'
 
-            within "##{harry.id}" do 
+            within "##{gretchen.id}" do 
                 expect(page).to have_content(boardfit.name)
             end
         end
