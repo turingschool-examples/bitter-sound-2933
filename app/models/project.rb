@@ -7,4 +7,8 @@ class Project <ApplicationRecord
   def count_contestants
     contestants.count
   end
+
+  def contestants_ages
+    contestants.pluck(:age)
+  end
 end
