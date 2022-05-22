@@ -64,9 +64,9 @@ RSpec.describe Project, type: :model do
       ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
       ContestantProject.create(contestant_id: gretchen.id, project_id: boardfit.id)
 
-      expect(news_chic.contestants_ages).to eq([40, 40])
-      expect(upholstery_tux.contestants_ages).to eq([40, 20])
-      expect(boardfit.contestants_ages).to eq([40, 20, 32])
+      expect(news_chic.contestants_years_of_experiences).to eq([13, 12])
+      expect(upholstery_tux.contestants_years_of_experiences).to eq([12, 8])
+      expect(boardfit.contestants_years_of_experiences).to eq([12, 8, 15])
     end
   end
 end
