@@ -6,4 +6,11 @@
 <p>Number of Contestants: <%= @project.contestant_count %></p>
 <p>Average Contestant Experience: <%= @project.average_experience %> years</p>
 
+<h2>Add Contestant Form</h2>
+<%= form_with url: "/contestant_projects/new", method: :post, local: true do |f| %>
+  <%= f.label :contestant_id %>
+  <%= f.text_field :contestant_id %>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <%= f.submit "Add Contestant to #{@project.name}"%>
+<% end %>
 
