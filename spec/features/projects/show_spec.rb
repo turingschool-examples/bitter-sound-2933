@@ -17,13 +17,14 @@ RSpec.describe 'project show page', type: :feature do
             lit_fit = furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
 
             visit "/projects/#{news_chic.id}"
+            save_and_open_page
             expect(page).to have_content(news_chic.name)
-            expect(page).to have_content(news_chic.mater)
+            expect(page).to have_content(news_chic.material)
             expect(page).to_not have_content(boardfit.name)
             expect(page).to_not have_content(upholstery_tux.name)
 
             expect(page).to have_content(recycled_material_challenge.theme)
-            expect(page).to_not have_content(furniture_challenge.name)
+            expect(page).to_not have_content(furniture_challenge.theme)
         end 
     end
 end
