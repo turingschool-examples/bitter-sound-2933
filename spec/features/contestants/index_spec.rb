@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'the contestant index page', type: :feature do
+
+  # As a visitor,
+  # When I visit the contestants index page ("/contestants")
+  # I see a list of names of all the contestants
+  # And under each contestants name I see a list of the projects (names) that they've been on
+  #
+  # (e.g.   Kentaro Kameyama
+  #         Projects: Litfit, Rug Tuxedo
+  #
+  #         Jay McCarroll
+  #         Projects: LeatherFeather)
+
   it 'lists all contestants and their projects' do
     recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -23,12 +35,7 @@ RSpec.describe 'the contestant index page', type: :feature do
     expect(page).to have_content("Kentaro Kameyama")
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Upholstery Tuxedo")
-
-
-
+    expect(page).to_not have_content("Erin Robertson")
+    expect(page).to_not have_content("Boardfit")
   end
-
-
-
-
 end
