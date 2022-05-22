@@ -34,7 +34,6 @@ RSpec.describe 'project show page', type: :feature do
             furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
 
             boardfit = recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
-
             upholstery_tux = furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
             lit_fit = furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
 
@@ -52,7 +51,7 @@ RSpec.describe 'project show page', type: :feature do
             ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
 
             visit "/projects/#{lit_fit.id}"
-            save_and_open_page
+            # save_and_open_page
             expect(page).to have_content(lit_fit.name)
             expect(page).to have_content(lit_fit.material)
             expect(page).to have_content(furniture_challenge.theme)
@@ -60,6 +59,17 @@ RSpec.describe 'project show page', type: :feature do
 
             expect(page).to_not have_content(recycled_material_challenge.theme)
             expect(page).to_not have_content(upholstery_tux.name)
+
+            visit "/projects/#{boardfit.id}"
+            expect(page).to have_content(boardfit.name)
+            expect(page).to have_content(boardfit.material)
+            expect(page).to have_content(recycled_material_challenge.theme)
+            expect(page).to have_content("Number of Contestants: 2")
+
+
+            expect(page).to_not have_content(furniture_challenge.theme)
+            
+
         end
     end
 end
