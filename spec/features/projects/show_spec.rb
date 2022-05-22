@@ -16,15 +16,14 @@ RSpec.describe 'projects show page' do
         # ContestantProject.create(contestant_id: kentaro.id, project_id: boardfit.id)
         # ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
 
-        visit "/projects/:#{news_chic.id}"
+        visit "/projects/#{news_chic.id}"
         
         expect(page).to have_content(news_chic.name)
         expect(page).to have_content(news_chic.material)
         expect(page).to_not have_content(boardfit.name)
         expect(page).to_not have_content(boardfit.material)
 
-
-        visit "/projects/:#{board_fit.id}"
+        visit "/projects/#{boardfit.id}"
 
         expect(page).to have_content(boardfit.name)
         expect(page).to have_content(boardfit.material)
