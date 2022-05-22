@@ -52,7 +52,7 @@ RSpec.describe 'project show page', type: :feature do
             ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
 
             visit "/projects/#{lit_fit.id}"
-
+            save_and_open_page
             expect(page).to have_content(lit_fit.name)
             expect(page).to have_content(lit_fit.material)
             expect(page).to have_content(furniture_challenge.theme)
@@ -60,7 +60,6 @@ RSpec.describe 'project show page', type: :feature do
 
             expect(page).to_not have_content(recycled_material_challenge.theme)
             expect(page).to_not have_content(upholstery_tux.name)
-
         end
     end
 end
