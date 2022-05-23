@@ -13,6 +13,7 @@ RSpec.describe 'Contestant Index Page' do
 
     @project_1 = ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
     @project_2 = ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+    
 
   end
   it "can visit the contestant index page and see all contestants with there projects" do
