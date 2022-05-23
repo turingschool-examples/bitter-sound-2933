@@ -48,5 +48,15 @@ RSpec.describe Project, type: :model do
       expect(upholstery_tux.number_of_contestants).to eq(2)
       expect(lit_fit.number_of_contestants).to eq(0)
     end
+
+    it ".contestants_average_experience returns the total average experience of contestants on that project" do
+      ContestantProject.create(contestant_id: jay.id, project_id: upholstery_tux.id)
+      ContestantProject.create(contestant_id: erin.id, project_id: upholstery_tux.id)
+
+      expect(news_chic.contestants_average_experience).to have_content(12.5)
+      expect(boardfit.contestants_average_experience).to have_content(11.5)
+      expect(upholstery_tux.contestants_average_experience).to have_content(12.0)
+      expect(lit_fit.contestants_average_experience).to have_content(0.0)
+    end
   end
 end

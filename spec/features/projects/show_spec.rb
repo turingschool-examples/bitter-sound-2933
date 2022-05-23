@@ -79,4 +79,31 @@ RSpec.describe "Projects show page", type: :feature do
       expect(page).to have_content("Number of Contestants: 0")
     end
   end
+
+  describe "User Story Extension 1 - Average years of experience for contestants by project" do
+    # As a visitor,
+    # When I visit a project's show page
+    # I see the average years of experience for the contestants that worked on that project
+    # (e.g.    Litfit
+    #     Material: Lamp Shade
+    #   Challenge Theme: Apartment Furnishings
+    #   Number of Contestants: 3
+    #   Average Contestant Experience: 10.25 years)
+    it "shows the average years of experience for the contestants that worked on that project" do
+      ContestantProject.create(contestant_id: jay.id, project_id: upholstery_tux.id)
+      ContestantProject.create(contestant_id: erin.id, project_id: upholstery_tux.id)
+
+      visit "/projects/#{news_chic.id}"
+      expect(page).to have_content("Average Contestant Experience: 12.5 years")
+
+      visit "/projects/#{boardfit.id}"
+      expect(page).to have_content("Average Contestant Experience: 11.5 years")
+
+      visit "/projects/#{upholstery_tux.id}"
+      expect(page).to have_content("Average Contestant Experience: 12.0 years")
+
+      visit "/projects/#{lit_fit.id}"
+      expect(page).to have_content("Average Contestant Experience: 0.0 years")
+    end
+  end
 end
