@@ -11,3 +11,12 @@
 <div id="contestantExperience">
 <h3>Average Contestant Experience: </h3><p><%= @project.average_exp %></p>
 </div>
+
+<h2>Add Contestants to This Project</h2>
+
+  <%= form_with url: "/contestant_projects", method: :post, local: true do |form| %>
+  <%= f.label :contestant_id%>
+  <%= form.text_field :contestand_id %>
+  <%= form.hidden_field :project_id, :value => @project.id %>
+  <%= form.submit "Add Contestant to Project" %>
+  <% end %>
