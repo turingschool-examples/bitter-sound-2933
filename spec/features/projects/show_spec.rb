@@ -52,7 +52,7 @@ RSpec.describe 'the project show page' do
 
     contestant_3 = Contestant.create!(name: "Jean", age: 21, hometown: 'Denver', years_of_experience: 2)
     contestant_project_3 = ContestantProject.create!(contestant_id: contestant_3.id, project_id: project_1.id)
-    visit "/projects/#{project.id}"
+    visit "/projects/#{project_1.id}"
 
     expect(page).to have_content("Number of Contestants: 3")
   end
