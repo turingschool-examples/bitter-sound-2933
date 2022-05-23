@@ -7,4 +7,12 @@ class Project < ApplicationRecord
   def contestant_count
     contestants.count
   end
+
+  def average_exp
+    total = []
+    contestants.each do |contestant|
+      total << contestant.years_of_experience
+    end
+    total.sum / contestants.count
+  end
 end
