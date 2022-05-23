@@ -19,8 +19,7 @@ RSpec.describe 'contestants index page' do
     ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
 
     visit '/contestants'
-    # save_and_open_page
-# require "pry"; binding.pry
+    
     expect(page).to have_content(jay.name)
     expect(jay.name).to appear_before(jay.projects.name)
   end
