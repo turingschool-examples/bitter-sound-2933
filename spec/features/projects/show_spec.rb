@@ -24,4 +24,6 @@ RSpec.describe 'the project show page' do
     expect(page).to have_content(project.material)
     expect(page).to have_content(challenge.theme)
   end
+
+
 end

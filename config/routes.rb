@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get '/shelters', to: 'shelters#index'
   # get '/shelters/new', to: 'shelters#new'
-  get '/projects', to: 'projects#index'
+  get '/contestants', to: 'contestants#index'
+
   get '/projects/:id', to: 'projects#show'
 
   get '/challenges', to: 'projects#index'
