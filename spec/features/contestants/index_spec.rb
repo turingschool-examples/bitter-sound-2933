@@ -29,6 +29,7 @@ RSpec.describe 'Contestants index page', type: :feature do
     expect(page).to have_content(kentaro.name)
     expect(page).to have_content(gretchen.name)
     expect(page).to have_content(erin.name)
+    save_and_open_page
 
     within "#contestant#{jay.id}" do
       expect(page).to have_content(jay.name)
@@ -37,7 +38,7 @@ RSpec.describe 'Contestants index page', type: :feature do
       expect(page).to_not have_content(boardfit.name)
     end
 
-    within "#contestant#{erin.id}" do
+    within "#contestant#{gretchen.id}" do
       expect(page).to have_content(gretchen.name)
       expect(page).to_not have_content(erin.name)
       expect(page).to have_content(upholstery_tux.name)
