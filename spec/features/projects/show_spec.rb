@@ -87,4 +87,40 @@ RSpec.describe 'Project show page' do
       expect(page).to have_content('23')
     end
   end
+
+  it 'can add a contestant to the project' do
+    recycled_material_challenge = Challenge.create(theme: 'Recycled Material', project_budget: 1000)
+    news_chic = recycled_material_challenge.projects.create(name: 'News Chic', material: 'Newspaper')
+    jay = Contestant.create(name: 'Jay McCarroll', age: 40, hometown: 'LA', years_of_experience: 13)
+    gretchen = Contestant.create(name: 'Gretchen Jones', age: 36, hometown: 'NYC', years_of_experience: 12)
+    oscar = Contestant.create(name: 'Oscar Grouch', age: 63, hometown: 'NYC', years_of_experience: 44)
+    bongo = Contestant.create(name: 'Bongo Fett', age: 26, hometown: 'Tatooine', years_of_experience: 5)
+    ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
+    ContestantProject.create(contestant_id: oscar.id, project_id: news_chic.id)
+    ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
+
+    visit "/projects/#{news_chic.id}"
+
+    within("div##{news_chic.id}") do
+      expect(page).to have_content('Number of Contestants:')
+      expect(page).to have_content('3')
+    end
+
+    fill_in('Contestant ID:', with: bongo.id.to_s)
+
+    click_button('Add Contestant to Project')
+
+    expect(current_directory).to eq("/projects/#{news_chic.id}")
+
+    within("div##{news_chic.id}") do
+      expect(page).to have_content('Number of Contestants:')
+      expect(page).to have_content('4')
+    end
+
+    visit '/contestants'
+
+    within("div##{bongo.id}") do
+      expect(page).to have_content(news_chic.name)
+    end
+  end
 end
