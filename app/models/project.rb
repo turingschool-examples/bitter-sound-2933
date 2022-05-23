@@ -7,4 +7,8 @@ class Project <ApplicationRecord
   def theme
     challenge.theme
   end
+
+  def contestant_count
+    contestants.count
+  end
 end
