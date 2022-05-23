@@ -40,7 +40,7 @@ RSpec.describe Contestant, type: :model do
 
     it ".project_names" do
       expect(gretchen.project_names).to eq("News Chic, Upholstery Tuxedo")
-      expect(kentaro.project_names).to eq("Upholstery Tuxedo, Boardfit")
+      expect(kentaro.project_names).to eq("Boardfit, Upholstery Tuxedo")
     end
   end
 end

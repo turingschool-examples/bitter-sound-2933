@@ -50,7 +50,7 @@ RSpec.describe "Contestants index page", type: :feature do
       end
 
       within "#contestant-#{kentaro.id}" do
-        expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
+        expect(page).to have_content("Projects: Boardfit, Upholstery Tuxedo")
         expect(page).to_not have_content("News Chic")
       end
     end
