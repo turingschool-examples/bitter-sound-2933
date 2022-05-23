@@ -3,7 +3,7 @@
 <% @contestants.each do |contestant| %>
   <div id="contestant-<%= contestant.id %>">
     <p><strong><%= contestant.name %></strong></p>
-    <p>Projects: <%= contestant.project_names %></p>
+    <p><strong>Projects:</strong> <%= contestant.project_names %></p>
   </div>
   <br>
 <% end %>
