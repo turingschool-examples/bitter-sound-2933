@@ -40,6 +40,10 @@ When you have completed this challenge, submit by creating a Pull Request back t
 
 Project Runway! During a short period of time, contestants are given a challenge to create projects (outfits). Challenges have themes (For example: Recycled Material, Bridal Wear). Projects have a name and a material that is used. Contestants have a name, age, hometown, and years of experience. Challenges have many projects, projects belong to a challenge. Projects can have multiple contestants working on them, and contestants can work on different projects throughout the show.
 
+
+![Screen Shot 2022-05-21 at 8 56 33 PM](https://user-images.githubusercontent.com/99001315/169676231-77346b20-bbb0-4ecd-9a1e-2ead0144dde3.png)
+
+
 ---
 
 ## User Stories
