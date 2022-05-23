@@ -18,6 +18,6 @@ RSpec.describe 'project show page' do
 
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Newspaper")
-    expect(page).to have_content("Recycled Material")
+    expect(page).to have_content("Recycled Ma")
   end
 end
