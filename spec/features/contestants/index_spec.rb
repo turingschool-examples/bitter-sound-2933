@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe "Projects show page", type: :feature do
+RSpec.describe "Contestants index page", type: :feature do
   let!(:recycled_material_challenge) { Challenge.create(theme: "Recycled Material", project_budget: 1000) }
   let!(:furniture_challenge) { Challenge.create(theme: "Apartment Furnishings", project_budget: 1000) }
 
@@ -25,24 +25,34 @@ RSpec.describe "Projects show page", type: :feature do
     ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
   end
 
-  describe "User Story 1 of 3" do
+  describe "User Story 2 of 3" do
     # As a visitor,
-    # When I visit a project's show page ("/projects/:id"),
-    # I see that project's name and material
-    # And I also see the theme of the challenge that this project belongs to.
-    # (e.g.    Litfit
-    #   Material: Lamp Shade
-    #   Challenge Theme: Apartment Furnishings)
-    it "shows the project's name, material, and challenge theme" do
-      visit "/projects/#{news_chic.id}"
+    # When I visit the contestants index page ("/contestants")
+    # I see a list of names of all the contestants
+    # And under each contestants name I see a list of the projects (names) that they've been on
+    #
+    # (e.g.   Kentaro Kameyama
+    #         Projects: Litfit, Rug Tuxedo
+    #
+    #         Jay McCarroll
+    #         Projects: LeatherFeather)
+    it "shows the names of all contestants and the list of each contestant's projects" do
+      visit "/contestants"
 
-      expect(page).to have_content("Project Name: News Chic")
-      expect(page).to have_content("Material: Newspaper")
-      expect(page).to have_content("Challenge Theme: Recycled Material")
+      expect(page).to have_content("Jay McCarroll")
+      expect(page).to have_content("Gretchen Jones")
+      expect(page).to have_content("Kentaro Kameyama")
+      expect(page).to have_content("Erin Robertson")
 
-      expect(page).to_not have_content("Boardfit")
-      expect(page).to_not have_content("Upholstery Tuxedo")
-      expect(page).to_not have_content("Apartment Furnishings")
+      within "#contestant-#{gretchen.id}" do
+        expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
+        expect(page).to_not have_content("Boardfit")
+      end
+
+      within "#contestant-#{kentaro.id}" do
+        expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
+        expect(page).to_not have_content("News Chic")
+      end
     end
   end
 end
