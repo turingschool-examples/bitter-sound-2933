@@ -43,6 +43,40 @@ RSpec.describe "Projects show page", type: :feature do
       expect(page).to_not have_content("Boardfit")
       expect(page).to_not have_content("Upholstery Tuxedo")
       expect(page).to_not have_content("Apartment Furnishings")
+
+      visit "/projects/#{upholstery_tux.id}"
+
+      expect(page).to have_content("Project Name: Upholstery Tuxedo")
+      expect(page).to have_content("Material: Couch")
+      expect(page).to have_content("Challenge Theme: Apartment Furnishings")
+
+      expect(page).to_not have_content("News Chic")
+      expect(page).to_not have_content("Newspaper")
+      expect(page).to_not have_content("Recycled Material")
+    end
+  end
+
+  describe "User Story 3 of 3" do
+    # As a visitor,
+    # When I visit a project's show page
+    # I see a count of the number of contestants on this project
+    #
+    # (e.g.    Litfit
+    #     Material: Lamp Shade
+    #   Challenge Theme: Apartment Furnishings
+    #   Number of Contestants: 3 )
+    it "has a count of the number of contestants on this project" do
+      visit "/projects/#{news_chic.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{boardfit.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{lit_fit.id}"
+      expect(page).to have_content("Number of Contestants: 0")
     end
   end
 end
