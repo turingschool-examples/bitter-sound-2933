@@ -43,6 +43,7 @@ Project Runway! During a short period of time, contestants are given a challenge
 ---
 
 text here for submission - start time 12:45 PM CT
+need to be done by 15:45 CT
 
 ## User Stories
 ```
