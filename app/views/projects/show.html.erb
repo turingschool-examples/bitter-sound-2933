@@ -3,3 +3,14 @@
 <h3>Challenge Theme: <%= @project.challenge.theme %></h3>
 <h3>Number of Contestants: <%= @project.contestant_count %></h3>
 <h3>Average Contestant Experience: <%= @project.average_exp_years %> years</h3>
+
+<br>
+<br>
+
+<h4>Add existing Contestant</h4>
+<%= form_with url: '/projects', method: :post, local: true do |f| %>
+  <%= f.label :id %>
+  <%= f.number_field :id %>
+
+  <%= f.submit 'Add Contestant To Project' %>
+<% end %>

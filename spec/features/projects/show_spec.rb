@@ -86,4 +86,46 @@ RSpec.describe 'the project show page' do
 
     expect(page).to have_content("Average Contestant Experience: 9 years")
   end
+
+  it 'can add a contestant to a project' do
+    # User Story Extension 2 - Adding a contestant to a project
+    #
+    # As a visitor,
+    # When I visit a project's show page
+    # I see a form to add a contestant to this project
+    # When I fill out a field with an existing contestants id
+    # And hit "Add Contestant To Project"
+    # I'm taken back to the project's show page
+    # And I see that the number of contestants has increased by 1
+    # And when I visit the contestants index page
+    # I see that project listed under that contestant's name
+
+    contestant_1 = Contestant.create!(name: "Kentaro Kameyama", age: 18, hometown: 'Chicago', years_of_experience: 4)
+    contestant_2 = Contestant.create!(name: "Jay McCarroll", age: 21, hometown: 'Denver', years_of_experience: 2)
+    contestant_3 = Contestant.create!(name: "Jean", age: 21, hometown: 'Denver', years_of_experience: 21)
+
+    challenge = Challenge.create!(theme: 'Apartment Furnishings', project_budget: 500)
+    project_1 = challenge.projects.create!(name: 'Litfit', material: 'Lamp Shade')
+    # project_2 = challenge.projects.create!(name: 'Other Project', material: 'Lamp Shade')
+
+    contestant_project_1 = ContestantProject.create!(contestant_id: contestant_1.id, project_id: project_1.id)
+    contestant_project_2 = ContestantProject.create!(contestant_id: contestant_2.id, project_id: project_1.id)
+
+    visit "/projects/#{project_1.id}"
+    expect(page).to have_content("Number of Contestants: 2")
+
+    # save_and_open_page
+
+    fill_in 'Id', with: "#{contestant_3.id}"
+    click_button 'Add Contestant To Project'
+
+    expect(page).to have_content("Number of Contestants: 3")
+
+    visit "/contestants"
+
+    within "#contestant-#{contestant_3.id}" do
+      expect(page).to have_content(project_1.name)
+    end
+
+  end
 end

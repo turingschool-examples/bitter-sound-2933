@@ -7,11 +7,14 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
   end
-  # 
-  # def create
-  #   @challenge = Challenge.find(project_params[:challenge_id])
-  #   project = Project.new(project_params)
-  # end
+  #
+  def create
+    project = Project.last
+    @contestant = Contestant.find(params[:id])
+    @contestant_project_1 = ContestantProject.create!(contestant_id: @contestant.id, project_id: project.id)
+    # binding.pry
+    redirect_to "/projects/#{project.id}"
+  end
 
   private
 
