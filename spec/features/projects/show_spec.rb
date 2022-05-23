@@ -16,11 +16,29 @@ RSpec.describe "projects show page" do
     ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
 
     visit "/projects/#{news_chic.id}"
-    # save_and_open_page
+    save_and_open_page
 
     expect(page).to have_content(news_chic.name)
     expect(page).to have_content(news_chic.material)
     expect(news_chic.challenge.theme).to eq(recycled_material_challenge.theme)
     expect(page).to_not have_content(furniture_challenge.theme)
   end
+
+
+# User Story 3 of 3
+# As a visitor,
+# When I visit a project's show page
+# I see a count of the number of contestants on this project
+#
+# (e.g.    Litfit
+#     Material: Lamp Shade
+#   Challenge Theme: Apartment Furnishings
+#   Number of Contestants: 3 )
+
+  it "can see a count of the number of contestants on this project" do
+    visit "/projects/#{news_chic.id}"
+
+    expect(page).to have_content("2")
+  end
+
 end
