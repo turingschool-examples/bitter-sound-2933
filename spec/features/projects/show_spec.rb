@@ -11,6 +11,14 @@ RSpec.describe 'Project show page' do
     upholstery_tux = furniture_challenge.projects.create(name: 'Upholstery Tuxedo', material: 'Couch')
     lit_fit = furniture_challenge.projects.create(name: 'Litfit', material: 'Lamp')
 
+    jay = Contestant.create(name: 'Jay McCarroll', age: 40, hometown: 'LA', years_of_experience: 13)
+    gretchen = Contestant.create(name: 'Gretchen Jones', age: 36, hometown: 'NYC', years_of_experience: 12)
+    oscar = Contestant.create(name: 'Oscar Grouch', age: 63, hometown: 'NYC', years_of_experience: 44)
+
+    ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
+    ContestantProject.create(contestant_id: oscar.id, project_id: news_chic.id)
+    ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
+
     visit "/projects/#{news_chic.id}"
 
     expect(page).to have_content(news_chic.name)
