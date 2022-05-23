@@ -115,7 +115,6 @@ RSpec.describe 'projects show page', type: :feature do
         ContestantProject.create(contestant_id: jay.id, project_id: boardfit.id)
        
         visit "/contestants"
-        save_and_open_page
         expect(page).to have_content("Jay McCarroll")
         expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
         expect(page).to_not have_content("Projects: News Chic")
@@ -125,7 +124,7 @@ RSpec.describe 'projects show page', type: :feature do
         
         fill_in('contestant_id', with: "#{gretchen.id}")
         click_button('Add Contestant To Project')
-
+        
         expect(current_path).to eq("/projects/#{news_chic.id}")
         expect(page).to have_content("Number of Contestants: 1")
 
