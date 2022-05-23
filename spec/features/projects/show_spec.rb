@@ -103,19 +103,36 @@ RSpec.describe 'projects show page', type: :feature do
 
     it 'has a form to enter contestant id to add to project' do
         recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+        furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
         news_chic = recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+        upholstery_tux = furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
+        boardfit = recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
+        
         jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
         gretchen = Contestant.create(name: "Gretchen Jones", age: 40, hometown: "NYC", years_of_experience: 12)
         
-        ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
+        ContestantProject.create(contestant_id: jay.id, project_id: upholstery_tux.id)
+        ContestantProject.create(contestant_id: jay.id, project_id: boardfit.id)
        
+        visit "/contestants"
+        save_and_open_page
+        expect(page).to have_content("Jay McCarroll")
+        expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
+        expect(page).to_not have_content("Projects: News Chic")
+
         visit "/projects/#{news_chic.id}"
-        expect(page).to have_content("Number of Contestants: 1")
+        expect(page).to have_content("Number of Contestants: 0")
         
         fill_in('contestant_id', with: "#{gretchen.id}")
         click_button('Add Contestant To Project')
 
         expect(current_path).to eq("/projects/#{news_chic.id}")
-        expect(page).to have_content("Number of Contestants: 2")
+        expect(page).to have_content("Number of Contestants: 1")
+
+        visit "/contestants"
+        expect(page).to have_content("Jay McCarroll")
+        expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
+        expect(page).to have_content("Gretchen Jones")
+        expect(page).to have_content("Projects: News Chic")
     end
 end
