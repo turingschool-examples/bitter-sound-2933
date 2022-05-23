@@ -9,15 +9,16 @@ class Project <ApplicationRecord
   end
 
   def average_exp_years
-    total_years = 0
+    total_years = []
     contestants.each do |contestant|
-      total_years += contestant.years_of_experience
+      total_years << contestant.years_of_experience
     end
-    
-    if contestant_count == 0
+
+    if total_years.count == 0
       return 0
     else
-      return total_years / contestant_count
+      return total_years.sum / total_years.count
     end
+    
   end
 end
