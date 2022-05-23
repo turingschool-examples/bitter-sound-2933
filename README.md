@@ -42,6 +42,8 @@ Project Runway! During a short period of time, contestants are given a challenge
 
 ---
 
+text here for submission - start time 12:45 PM CT
+
 ## User Stories
 ```
 User Story 1 of 3
@@ -113,4 +115,3 @@ And I see that the number of contestants has increased by 1
 And when I visit the contestants index page
 I see that project listed under that contestant's name
 ```
-
