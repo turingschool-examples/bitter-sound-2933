@@ -106,11 +106,11 @@ RSpec.describe 'Project show page' do
       expect(page).to have_content('3')
     end
 
-    fill_in('Contestant ID:', with: bongo.id.to_s)
+    fill_in(:contestant_id, with: bongo.id.to_s)
 
     click_button('Add Contestant to Project')
 
-    expect(current_directory).to eq("/projects/#{news_chic.id}")
+    expect(current_path).to eq("/projects/#{news_chic.id}")
 
     within("div##{news_chic.id}") do
       expect(page).to have_content('Number of Contestants:')
