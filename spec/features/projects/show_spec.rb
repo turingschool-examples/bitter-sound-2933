@@ -44,14 +44,23 @@ RSpec.describe 'Project show page' do
 
     visit "/projects/#{news_chic.id}"
 
-    expect(page).to have_content('Number of contestants: 2')
+    within("div##{news_chic.id}") do
+      expect(page).to have_content('Number of Contestants:')
+      expect(page).to have_content('2')
+    end
 
     visit "/projects/#{upholstery_tux.id}"
 
-    expect(page).to have_content('Number of contestants: 2')
+    within("div##{upholstery_tux.id}") do
+      expect(page).to have_content('Number of Contestants:')
+      expect(page).to have_content('2')
+    end
 
     visit "/projects/#{boardfit.id}"
 
-    expect(page).to have_content('Number of contestants: 2')
+    within("div##{boardfit.id}") do
+      expect(page).to have_content('Number of Contestants:')
+      expect(page).to have_content('2')
+    end
   end
 end
