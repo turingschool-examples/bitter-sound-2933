@@ -26,7 +26,7 @@ RSpec.describe 'project show page' do
 
   it 'shows contestant names and projects' do
     visit "/contestants"
-    save_and_open_page
+    # save_and_open_page
 
     within "##{@jay.id}" do
       expect(page).to have_content(@jay.name)
