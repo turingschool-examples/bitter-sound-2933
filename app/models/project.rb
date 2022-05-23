@@ -5,7 +5,7 @@ class Project < ApplicationRecord
 
   validates_presence_of :name, :material
 
-  def count_contestant
+  def count_contestants
     self.contestants.count
   end
 end

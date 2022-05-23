@@ -20,7 +20,7 @@ RSpec.describe 'contestants index page' do
 
     visit '/contestants'
     # save_and_open_page
-
+require "pry"; binding.pry
     expect(page).to have_content(jay.name)
     expect(jay.name).to appear_before(jay.projects)
   end
