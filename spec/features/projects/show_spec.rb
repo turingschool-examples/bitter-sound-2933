@@ -39,7 +39,12 @@ RSpec.describe 'Projects show page', type: :feature do
   end
 
   it 'shows an average number of years experience between all contestants on the project' do
+    visit "/projects/#{@boardfit.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 15")
+
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 12.5")
   end
-
-
 end
