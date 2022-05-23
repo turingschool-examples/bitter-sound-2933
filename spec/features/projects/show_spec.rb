@@ -128,7 +128,7 @@ RSpec.describe "Projects show page", type: :feature do
 
       expect(page).to have_content("Number of Contestants: 0")
 
-      fill_in :add_contestant, with: jay.id
+      fill_in :contestant_id, with: jay.id
       click_button "Add Contestant To Project"
 
       expect(current_path).to eq("/projects/#{lit_fit.id}")

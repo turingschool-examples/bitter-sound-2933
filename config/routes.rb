@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get '/projects/:id', to: 'projects#show'
 
+  post '/projects/:id/contestants', to: 'projects_contestants#create'
+
   get '/contestants', to: 'contestants#index'
 end
