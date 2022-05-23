@@ -56,4 +56,34 @@ RSpec.describe 'the project show page' do
 
     expect(page).to have_content("Number of Contestants: 3")
   end
+
+  it 'give me the average years of experience of the contestants on the project' do
+    # As a visitor,
+    # When I visit a project's show page
+    # I see the average years of experience for the contestants that worked on that project
+    # (e.g.    Litfit
+    #     Material: Lamp Shade
+    #   Challenge Theme: Apartment Furnishings
+    #   Number of Contestants: 3
+    #   Average Contestant Experience: 10.25 years)
+    contestant_1 = Contestant.create!(name: "Kentaro Kameyama", age: 18, hometown: 'Chicago', years_of_experience: 4)
+    contestant_2 = Contestant.create!(name: "Jay McCarroll", age: 21, hometown: 'Denver', years_of_experience: 2)
+
+    challenge = Challenge.create!(theme: 'Apartment Furnishings', project_budget: 500)
+    project_1 = challenge.projects.create!(name: 'Litfit', material: 'Lamp Shade')
+
+    contestant_project_1 = ContestantProject.create!(contestant_id: contestant_1.id, project_id: project_1.id)
+    contestant_project_2 = ContestantProject.create!(contestant_id: contestant_2.id, project_id: project_1.id)
+
+    visit "/projects/#{project_1.id}"
+    # save_and_open_page
+
+    expect(page).to have_content("Average Contestant Experience: 3 years")
+
+    contestant_3 = Contestant.create!(name: "Jean", age: 21, hometown: 'Denver', years_of_experience: 21)
+    contestant_project_3 = ContestantProject.create!(contestant_id: contestant_3.id, project_id: project_1.id)
+    visit "/projects/#{project_1.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 9 years")
+  end
 end
