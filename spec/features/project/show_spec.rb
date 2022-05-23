@@ -27,18 +27,23 @@ RSpec.describe 'Show Page' do
   end
 
   it "can visit show page" do
-    visit "/projects/#{@new_chic}"
+    recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+    news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
 
-    expect(current_path).to eq("/projects/#{@new_chic}")
+    visit "/projects/#{@news_chic.id}"
+
+    expect(current_path).to eq("/projects/#{@news_chic.id}")
   end
 
   it "displays its all the projects attributes and the challenges attributes" do
-    visit "/projects/#{@new_chic}"
+    recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+    news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+
+    visit "/projects/#{@news_chic.id}"
 
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Newspaper")
     expect(page).to have_content("Recycled Material")
-    expect(page).to have_content(1000)
 
   end
 end
