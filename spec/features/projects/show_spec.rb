@@ -34,6 +34,10 @@ RSpec.describe 'project show page' do
         click_button "Add Contestant to Project"
         expect(current_path).to eq("/projects/#{news_chic.id}")  
         expect(page).to have_content("Number of Contestants: 3")
+        visit "/contestants"
+        within("contestant-#{erin.id}") do
+            expect(page).to have_content(news_chic.name)
+        end
     end
 
 end
