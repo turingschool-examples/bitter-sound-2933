@@ -37,9 +37,16 @@ RSpec.describe Project, type: :model do
       ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
     end
 
-    it ".challenge_theme" do
+    it ".challenge_theme returns the name of the challenge them for a project" do
       expect(news_chic.challenge_theme).to eq("Recycled Material")
       expect(upholstery_tux.challenge_theme).to eq("Apartment Furnishings")
+    end
+
+    it ".number_of_contestants returns total number of contestants on a project" do
+      expect(news_chic.number_of_contestants).to eq(2)
+      expect(boardfit.number_of_contestants).to eq(2)
+      expect(upholstery_tux.number_of_contestants).to eq(2)
+      expect(lit_fit.number_of_contestants).to eq(0)
     end
   end
 end
