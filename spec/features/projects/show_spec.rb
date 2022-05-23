@@ -46,7 +46,7 @@ RSpec.describe 'the project show page' do
     contestant_project_2 = ContestantProject.create!(contestant_id: contestant_2.id, project_id: project_1.id)
 
     visit "/projects/#{project_1.id}"
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content("Number of Contestants: 2")
 
