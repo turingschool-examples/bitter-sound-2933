@@ -16,6 +16,7 @@ RSpec.describe 'project show page' do
         expect(page).to have_content(news_chic.material)
         expect(page).to have_content(recycled_material_challenge.theme)
         expect(page).to have_content("Number of Contestants: 2")
+        expect(page).to have_content("Average Contestant Experience: 12.5")
 
     end
 
