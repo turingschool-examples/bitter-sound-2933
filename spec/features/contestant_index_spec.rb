@@ -1,18 +1,19 @@
+# User Story 2 of 3
+#
+# As a visitor,
+# When I visit the contestants index page ("/contestants")
+# I see a list of names of all the contestants
+# And under each contestants name I see a list of the projects (names) that they've been on
+#
+# (e.g.   Kentaro Kameyama
+#         Projects: Litfit, Rug Tuxedo
+#
+#         Jay McCarroll
+#         Projects: LeatherFeather)
+
 require 'rails_helper'
 
-
-RSpec.describe Project, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :material}
-  end
-
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
-  end
-
+RSpec.describe Contestant, type: :feature do
   before :each do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -36,17 +37,21 @@ RSpec.describe Project, type: :model do
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
   end
 
-  it 'can count the number of contestants on a project' do
-    expect(@upholstery_tux.number_of_contestants).to eq(2)
-    expect(@lit_fit.number_of_contestants).to eq(0)
-    expect(@news_chic.number_of_contestants).to eq(2)
-    expect(@boardfit.number_of_contestants).to eq(2)
-  end
+  it 'displays the name of each contestant, and their project names' do
+    visit "/contestants"
+    # save_and_open_page
+    expect(page).to have_content("Jay McCarrol")
+    expect(page).to have_content("News Chic")
 
-  it 'can count the average experience of contestants for a project' do
-    expect(@upholstery_tux.avg_experience).to eq(10)
-    expect(@lit_fit.avg_experience).to eq(0)
-    expect(@news_chic.avg_experience).to eq(12.5)
-    expect(@boardfit.avg_experience).to eq(11.5)
+    expect(page).to have_content("Gretchen Jones")
+    expect(page).to have_content("News Chic")
+    expect(page).to have_content("Upholstery Tux")
+
+    expect(page).to have_content("Kentaro Kameyama")
+    expect(page).to have_content("Upholstery Tux")
+    expect(page).to have_content("Boardfit")
+
+    expect(page).to have_content("Erin Robertson")
+    expect(page).to have_content("Boardfit")
   end
 end
