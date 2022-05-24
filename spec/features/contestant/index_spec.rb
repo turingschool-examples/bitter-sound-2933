@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "contestants index page" do
   it "lists all the contestants and their associated projects" do
-    ContestantProject.destroy_all
-    Contestant.destroy_all
-    Project.destroy_all
-    Challenge.destroy_all
+    # ContestantProject.destroy_all
+    # Contestant.destroy_all
+    # Project.destroy_all
+    # Challenge.destroy_all
     recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
 
