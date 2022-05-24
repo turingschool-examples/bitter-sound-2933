@@ -39,9 +39,19 @@ RSpec.describe Contestant, type: :feature do
 
   it 'displays the name of each contestant, and their project names' do
     visit "/contestants"
-    expect(page).to have_content("#{@jay.name}")
-    expect(page).to have_content("#{@gretchen.name}")
-    expect(page).to have_content("#{@kentaro.name}")
-    expect(page).to have_content("#{@erin.name}")
+    # save_and_open_page
+    expect(page).to have_content("Jay McCarrol")
+    expect(page).to have_content("News Chic")
+
+    expect(page).to have_content("Gretchen Jones")
+    expect(page).to have_content("News Chic")
+    expect(page).to have_content("Upholstery Tux")
+
+    expect(page).to have_content("Kentaro Kameyama")
+    expect(page).to have_content("Upholstery Tux")
+    expect(page).to have_content("Boardfit")
+
+    expect(page).to have_content("Erin Robertson")
+    expect(page).to have_content("Boardfit")
   end
 end

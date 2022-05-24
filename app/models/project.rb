@@ -1,4 +1,4 @@
-class Project <ApplicationRecord
+class Project < ApplicationRecord
   # binding.pry
   validates_presence_of :name
   validates_presence_of :material

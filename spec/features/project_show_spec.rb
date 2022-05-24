@@ -29,4 +29,17 @@ RSpec.describe Project, type: :feature do
     expect(page).to have_content('Newspaper')
     expect(page).to have_content('Recycled Material')
   end
+
+  # User Story 3 of 3
+  # As a visitor,
+  # When I visit a project's show page
+  # I see a count of the number of contestants on this project
+  #
+  # (e.g.    Litfit
+  #   Material: Lamp Shade
+  #   Challenge Theme: Apartment Furnishings
+  #   Number of Contestants: 3 )
+  # it 'displays the number of contestants on a project' do
+  #   visit ("/projects/#{@news_chic.id}")
+  # end
 end
