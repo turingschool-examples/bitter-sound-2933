@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'Contestamts Index Page' do
+RSpec.describe 'Contestants Index Page' do
   let!(:recycled_material_challenge) { Challenge.create!(theme: "Recycled Material", project_budget: 1000) }
   let!(:furniture_challenge) { Challenge.create!(theme: "Apartment Furnishings", project_budget: 1000) }
 
