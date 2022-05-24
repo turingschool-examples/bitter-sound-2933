@@ -60,12 +60,12 @@ RSpec.describe 'Projects show page', type: :feature do
     expect(page).to have_content("Number of Contestants: 2")
     expect(page).to have_content("Average Contestant Experience: 14")
 
-    visit "/projects/#{@boardfit.id}"
-    
-    within "#contestant#{jay.id}" do
-      expect(page).to have_content(jay.name)
-      expect(page).to have_content(news_chic.name)
-      expect(page).to have_content(boardfit.name)
+    visit "/contestants"
+
+    within "#contestant#{@jay.id}" do
+      expect(page).to have_content(@jay.name)
+      expect(page).to have_content(@news_chic.name)
+      expect(page).to have_content(@boardfit.name)
     end
   end
 end
