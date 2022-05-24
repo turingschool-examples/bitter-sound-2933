@@ -35,10 +35,15 @@ RSpec.describe Project, type: :model do
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
   end
+
   it 'can count the number of contestants on a project' do
     expect(@upholstery_tux.number_of_contestants).to eq(2)
     expect(@lit_fit.number_of_contestants).to eq(0)
     expect(@news_chic.number_of_contestants).to eq(2)
     expect(@boardfit.number_of_contestants).to eq(2)
+  end
+
+  it 'can count the average experience of contestants for a project' do
+    expect(@upholstery_tux.avg_experience).to eq(11.5)
   end
 end

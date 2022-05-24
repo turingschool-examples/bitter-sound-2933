@@ -51,10 +51,25 @@ RSpec.describe Project, type: :feature do
   #   Material: Lamp Shade
   #   Challenge Theme: Apartment Furnishings
   #   Number of Contestants: 3 )
-  
+
   it 'displays the number of contestants on a project' do
     visit ("/projects/#{@news_chic.id}")
     # save_and_open_page
     expect(page).to have_content('Number of Contestants: 2')
+  end
+
+  # User Story Extension 1 - Average years of experience for contestants by project
+  #
+  #   As a visitor,
+  #   When I visit a project's show page
+  #   I see the average years of experience for the contestants that worked on that project
+  #   (e.g.    Litfit
+  #     Material: Lamp Shade
+  #     Challenge Theme: Apartment Furnishings
+  #     Number of Contestants: 3
+  #     Average Contestant Experience: 10.25 years)
+
+  it 'displays the average contestants experience' do
+    expect(page).to_have conntent('Average Contestant Experience: 11.5')
   end
 end
