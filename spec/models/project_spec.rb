@@ -44,6 +44,9 @@ RSpec.describe Project, type: :model do
   end
 
   it 'can count the average experience of contestants for a project' do
-    expect(@upholstery_tux.avg_experience).to eq(11.5)
+    expect(@upholstery_tux.avg_experience).to eq(10)
+    expect(@lit_fit.avg_experience).to eq(0)
+    expect(@news_chic.avg_experience).to eq(12.5)
+    expect(@boardfit.avg_experience).to eq(11.5)
   end
 end

@@ -9,4 +9,13 @@ class Project < ApplicationRecord
   def number_of_contestants
     contestants.count
   end
+
+  def avg_experience
+    # binding.pry
+    if contestants.count > 0
+      (contestants.sum(:years_of_experience).to_f / contestants.count)
+    else
+      0
+    end
+  end
 end
