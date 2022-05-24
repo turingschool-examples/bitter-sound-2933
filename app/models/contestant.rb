@@ -8,4 +8,9 @@ class Contestant <ApplicationRecord
     contestant = Contestant.find(id)
     contestant.projects.select(:name)
   end
+
+  # time permitting
+  # def all_projects
+  #   projects.select(:name)
+  # end
 end
