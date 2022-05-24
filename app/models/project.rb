@@ -11,5 +11,4 @@ class Project <ApplicationRecord
   def avg_year_exp
     contestants.average(:years_of_experience).to_f
   end
-
 end
