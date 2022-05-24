@@ -47,7 +47,7 @@ RSpec.describe "project page" do
   it "shows the average years of experience" do
     visit "/projects/#{@boardfit.id}"
 
-    expect(page).to have_content("Average Contestants Experience: 11.5")
+    expect(page).to have_content("Average Contestant Experience: 11.5")
   end
 
   xit "can add contestants" do
@@ -65,7 +65,7 @@ RSpec.describe "project page" do
 
     visit "/contestants"
 
-    within "##{@contestant.last.id}"
+    within "##{@contestant.last.id}" do
       expect(page).to have_content("Colin Reinhart")
       expect(page).to have_content("Projects: News Chic")
     end
