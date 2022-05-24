@@ -36,7 +36,7 @@ RSpec.describe Project, type: :feature do
 
   it 'displays the projects name and material on the show page' do
     visit ("/projects/#{@news_chic.id}")
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content('News Chic')
     expect(page).to have_content('Newspaper')
     expect(page).to have_content('Recycled Material')
@@ -51,8 +51,10 @@ RSpec.describe Project, type: :feature do
   #   Material: Lamp Shade
   #   Challenge Theme: Apartment Furnishings
   #   Number of Contestants: 3 )
+  
   it 'displays the number of contestants on a project' do
     visit ("/projects/#{@news_chic.id}")
+    # save_and_open_page
     expect(page).to have_content('Number of Contestants: 2')
   end
 end
