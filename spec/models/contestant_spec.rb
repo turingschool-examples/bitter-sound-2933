@@ -14,7 +14,7 @@ RSpec.describe Contestant, type: :model do
     it {should have_many(:projects).through(:contestant_projects)}
   end
 
-  describes 'methods' do
+  describe 'class methods' do
     before :each do
       #Challenges
       @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
@@ -37,8 +37,6 @@ RSpec.describe Contestant, type: :model do
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     end
-
-    expect(@news_chic.sum_of_contestants).to ea(2)
 
   end
 end
