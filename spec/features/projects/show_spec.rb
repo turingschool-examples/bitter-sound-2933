@@ -31,4 +31,11 @@ RSpec.describe 'the projets show page' do
     expect(page).to have_content("Newspaper")
     expect(page).to have_content("Recycled Material")
   end
+
+  it 'displays a count of the number of contestants on the project' do
+    visit "/projects/#{@news_chic.id}"
+    save_and_open_page
+    expect(page).to have_content(2)
+
+  end
 end

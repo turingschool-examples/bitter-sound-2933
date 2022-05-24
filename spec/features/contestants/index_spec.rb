@@ -34,7 +34,6 @@ RSpec.describe 'the contestants index page' do
 
   it 'displays a list of the projects the contestant has worked on under their name' do
     visit '/contestants'
-    save_and_open_page
 
     within "#contestant-#{@jay.id}" do
       expect(page).to have_content("News Chic")
