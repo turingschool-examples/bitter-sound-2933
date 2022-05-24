@@ -1,0 +1,12 @@
+<h1>All the Contestants</h1>
+
+<% @contestants.each do |contestant| %>
+  <div id="contestant-#{@contestant.id}">
+    <h3>Name: <%= contestant.name %></h3>
+    <h3>Project(s):
+      <% contestant.projects.each do |project| %>
+        <%= project.name %>,
+      <% end %>
+    </h3>
+  </div>
+<% end %>
