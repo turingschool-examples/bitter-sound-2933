@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_154722) do
+ActiveRecord::Schema.define(version: 2022_05_24_194008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_07_10_154722) do
     t.integer "years_of_experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_contestants_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -44,10 +46,14 @@ ActiveRecord::Schema.define(version: 2020_07_10_154722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "challenge_id"
+    t.bigint "contestants_id"
     t.index ["challenge_id"], name: "index_projects_on_challenge_id"
+    t.index ["contestants_id"], name: "index_projects_on_contestants_id"
   end
 
   add_foreign_key "contestant_projects", "contestants"
   add_foreign_key "contestant_projects", "projects"
+  add_foreign_key "contestants", "projects"
   add_foreign_key "projects", "challenges"
+  add_foreign_key "projects", "contestants", column: "contestants_id"
 end
