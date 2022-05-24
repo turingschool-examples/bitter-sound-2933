@@ -29,7 +29,6 @@ RSpec.describe 'Contestants index page', type: :feature do
     expect(page).to have_content(kentaro.name)
     expect(page).to have_content(gretchen.name)
     expect(page).to have_content(erin.name)
-    save_and_open_page
 
     within "#contestant#{jay.id}" do
       expect(page).to have_content(jay.name)
