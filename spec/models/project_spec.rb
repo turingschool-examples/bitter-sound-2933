@@ -39,5 +39,9 @@ RSpec.describe Project, type: :model do
     it 'can count the contestants on a project' do
       expect(@boardfit.contestant_count).to eq(2)
     end
+
+    it 'can find the average years of experience amoungst a projects contestants' do
+      expect(@news_chic.avg_experience).to eq(12.5)      
+    end
   end
 end

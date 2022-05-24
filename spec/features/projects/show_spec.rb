@@ -34,8 +34,12 @@ RSpec.describe 'the projets show page' do
 
   it 'displays a count of the number of contestants on the project' do
     visit "/projects/#{@news_chic.id}"
-    save_and_open_page
     expect(page).to have_content(2)
 
+  end
+
+  it 'displays the average years of experience amoungst all contestants on this project' do
+    visit "/projects/#{@news_chic.id}"
+    expect(page) .to have_content(12.5)   
   end
 end
