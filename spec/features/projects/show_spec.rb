@@ -27,4 +27,13 @@ RSpec.describe 'projects show page' do
     expect(page).to have_content("Cardboard")
     expect(page).to have_content("Recycled Material")
   end
+
+  it "shows the Numnber of Contestants on the project" do
+    visit "/projects/#{boardfit.id}"
+    expect(page).to have_content("Number of Contestants: 2")
+    visit "/projects/#{upholstery_tux.id}"
+    expect(page).to have_content("Number of Contestants: 2")
+    visit "/projects/#{news_chic.id}"
+    expect(page).to have_content("Number of Contestants: 2")
+  end
 end
