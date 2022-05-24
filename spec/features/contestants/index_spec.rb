@@ -17,11 +17,12 @@ RSpec.describe 'contestants index page', type: :feature do
     ContestantProject.create(contestant_id: kentaro.id, project_id: boardfit.id)
 
     visit("/contestants")
+    save_and_open_page
 
     expect(page).to have_content("Jay McCarroll")
-    expect(page).to have_content("Litfit")
-    expect(page).to have_content("Rug Tuxedo")
+    expect(page).to have_content("News Chic")
     expect(page).to have_content("Kentaro Kameyama")
-    expect(page).to have_content("LeatherFeather")
+    expect(page).to have_content("Upholstery Tuxedo")
+    expect(page).to have_content("Boardfit")
   end
 end
