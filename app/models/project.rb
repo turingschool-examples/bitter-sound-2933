@@ -11,4 +11,12 @@ class Project <ApplicationRecord
   def num_contestants
     self.contestants.count
   end
+
+  def avg_cont_age
+    if self.contestants.empty?
+      0
+    else
+      self.contestants.average(:years_of_experience).round(2)
+    end
+  end
 end
