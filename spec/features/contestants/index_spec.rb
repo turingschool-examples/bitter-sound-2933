@@ -22,7 +22,7 @@ RSpec.describe 'contestants index page' do
 
   it "can see a list of all contestants with the projects each have worked on under their names" do
     visit "/contestants"
-    save_and_open_page
+
     expect(page).to have_content("Jay McCarroll")
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Gretchen Jones")

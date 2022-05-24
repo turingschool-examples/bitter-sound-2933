@@ -29,11 +29,16 @@ RSpec.describe 'projects show page' do
   end
 
   it "shows the Numnber of Contestants on the project" do
-    visit "/projects/#{boardfit.id}"
+    visit "/projects/#{@boardfit.id}"
+save_and_open_page
     expect(page).to have_content("Number of Contestants: 2")
-    visit "/projects/#{upholstery_tux.id}"
+
+    visit "/projects/#{@upholstery_tux.id}"
+
     expect(page).to have_content("Number of Contestants: 2")
-    visit "/projects/#{news_chic.id}"
+
+    visit "/projects/#{@news_chic.id}"
+
     expect(page).to have_content("Number of Contestants: 2")
   end
 end
