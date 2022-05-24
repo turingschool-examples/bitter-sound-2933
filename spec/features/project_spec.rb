@@ -50,17 +50,17 @@ RSpec.describe "project page" do
     expect(page).to have_content("Average Contestant Experience: 11.5")
   end
 
-  xit "can add contestants" do
+  it "can add contestants" do
     visit "/projects/#{@news_chic.id}"
 
-    expect(page).to have_link("Add Contestant To Project")
+    expect(page).to have_button("Add Contestant To Project")
 
     fill_in :name, with: "Colin Reinhart"
     fill_in :age, with: 33
     fill_in :hometown, with: "Denver"
     fill_in :years_of_experience, with: 1
     click_button "Add Contestant To Project"
-    expect(file_path).to eq("/projects/#{@news_chic.id}")
+    
     expect(page).to have_content("Number of Contestants: 3")
 
     visit "/contestants"

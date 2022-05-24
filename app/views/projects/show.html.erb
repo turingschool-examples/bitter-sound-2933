@@ -4,3 +4,16 @@
 
 <p>Number of Contestants: <%= @project.contestants.count %> </p>
 <p>Average Contestant Experience: <%= @project.experience_average %>  </p>
+
+<%= form_with url: "/contestants/new", method: :post, local: true do |f| %>
+New Conttestant
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :age %>
+<%= f.text_field :age %>
+<%= f.label :hometown %>
+<%= f.text_field :hometown %>
+<%= f.label :years_of_experience %>
+<%= f.text_field :years_of_experience %>
+<%= f.submit "Add Contestant To Project" %>
+<% end %>
