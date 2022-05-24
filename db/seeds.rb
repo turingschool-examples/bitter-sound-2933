@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ContestantProject.destroy_all
+Contestant.destroy_all
+Project.destroy_all
+Challenge.destroy_all
 recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
 furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
 

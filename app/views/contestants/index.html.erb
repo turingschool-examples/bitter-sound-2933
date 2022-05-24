@@ -1,0 +1,6 @@
+<h1>Contestants</h1>
+
+<% @contestants.each do |contestant| %>
+  <h2><%= contestant.name %></h2>
+  <p>Projects: <%= contestant.projects.map { |project| project.name } %></p>
+<% end %>
